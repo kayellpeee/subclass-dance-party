@@ -27,6 +27,7 @@ var Dancer = function(top, left, timeBetweenSteps){
       dancers[i].$node.css('left', 0);
     }
   };
+
   Dancer.prototype.random = function(number) {
-    return Math.floor(Math.random() * number) + '.png';
-  }
+    return Math.floor(Math.random() * number);
+  };

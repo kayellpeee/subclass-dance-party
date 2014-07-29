@@ -5,8 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="lib/jquery.js"></script>
     <script src="src/dancer.js"></script>
-    <script src="src/blinkyDancer.js"></script>
-    <script src="src/morphingDancer.js"></script>
+    <script src="src/personDancer.js"></script>
     <script src="src/logoDancer.js"></script>
     <style type="text/css">
       body {
@@ -19,7 +18,11 @@
   <body>
     <div class="topbar">
       <span class="title">object dance party</span>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="LogoDancer">add a blinky dancer</a>    </div>
+      <select id="typeOfDancer">
+        <option class="logo">Logo</option>
+        <option class="person">Person</option>
+      </select>
+      <a href="#" class="addDancerButton" >add a dancer</a>    </div>
     <script src="src/init.js"></script>
   </body>
 </html>
