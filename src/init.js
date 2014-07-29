@@ -9,6 +9,7 @@ $(document).ready(function(){
       $('body').css( { 'background': 'url(img/danceFloor.png) no-repeat center top', 'background-size' : '100%' } );
     }
   });
+
   $(".addDancerButton").on("click", function(event){
     var choice = $('#typeOfDancer').val() + 'Dancer';
     // get the maker function for the kind of dancer we're supposed to make
@@ -19,20 +20,15 @@ $(document).ready(function(){
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      1000
     );
     dancers.push(dancer);
 
     $('body').append(dancer.$node);
   });
 
-
-
-// var dancer = new dancerMakerFunction(
-//       $("body").height() * Math.random(),
-//       $("body").width() * Math.random(),
-//       Math.random() * 1000
-//     );
-//     $('body').append(dancer.$node);
+  $(".lineUpLeft").on("click", function(event){
+    dancers[0].lineUp();
+  });
 });
 

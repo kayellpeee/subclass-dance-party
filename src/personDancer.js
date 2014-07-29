@@ -28,9 +28,11 @@ PersonDancer.prototype.step = function(){
   // other effects you can use on a jQuery-wrapped html tag.
   // this.$node.toggle();
   if( this.random(2) ){
-    this.$node.animate({ "left": "+=25px" }, "slow" );
+    this.left += 15;
+    this.$node.animate({ "left": this.left + "px"} );
   }else {
-    this.$node.animate({ "left": "-=25px" }, "slow" );
+    this.right -= 15;
+    this.$node.animate({ "left": this.left + "px"} );
   }
 };
 
