@@ -2,7 +2,11 @@ var MorphingDancer = function(top, left, timeBetweenSteps){
   Dancer.call(this, top, left, timeBetweenSteps);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
+  var randomLogo = ( Math.floor(Math.random()*6) ) + '.png';
+  this.logo = "img/" + randomLogo;
   this.size = 0;
+  this.$node = $('<img class="morphingDancer" src="' + this.logo + '"></img>');
+  this.$node.css( {top: top, left: left} );
 };
 
 MorphingDancer.prototype = Object.create(Dancer.prototype);
@@ -21,11 +25,9 @@ MorphingDancer.prototype.step = function(){
   // other effects you can use on a jQuery-wrapped html tag.
 
   if(Math.floor(Math.random()*2)) {
-    this.$node.css( "height", (this.size += Math.floor(Math.random()*20)) + 'px');
-    this.$node.css( "width", (this.size += Math.floor(Math.random()*20)) + 'px');
+    this.$node.animate( {"height": (this.size += Math.floor(Math.random()*20)) + 'px'}, 'slow');
   } else{
-    this.$node.css( "height", (this.size -= Math.floor(Math.random()*20)) + 'px');
-    this.$node.css( "width", (this.size -= Math.floor(Math.random()*20)) + 'px');
+    this.$node.animate( {"height": (this.size -= Math.floor(Math.random()*20)) + 'px'}, 'slow');
   }
 
 };

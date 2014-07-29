@@ -9,8 +9,11 @@
     <script src="src/morphingDancer.js"></script>
     <script src="src/movingDancer.js"></script>
     <style type="text/css">
-      body: {
+      body {
         overflow: hidden;
+        background: url('img/danceFloor.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
       }
     </style>
   </head>
@@ -18,6 +21,7 @@
     <div class="topbar">
       <span class="title">object dance party</span>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="MorphingDancer">add a blinky dancer</a>    </div>
+      <div class="ourDanceFloor"></div>
     <script src="src/init.js"></script>
   </body>
 </html>
