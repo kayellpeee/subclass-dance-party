@@ -21,3 +21,9 @@ var Dancer = function(top, left, timeBetweenSteps){
     //
     this.$node.css( {'top': top, 'left': left} );
   };
+
+  Dancer.prototype.lineUp = function(){
+    for(var i = 0; i < dancers.length; i++){
+      dancers[i].$node.css('left', 0);
+    }
+  };

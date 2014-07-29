@@ -4,7 +4,6 @@ var MorphingDancer = function(top, left, timeBetweenSteps){
   // so we must keep a copy of the old version of this function
   var randomLogo = ( Math.floor(Math.random()*6) ) + '.png';
   this.logo = "img/" + randomLogo;
-  this.size = 0;
   this.$node = $('<img class="morphingDancer" src="' + this.logo + '"></img>');
   this.$node.css( {top: top, left: left} );
 };
@@ -23,12 +22,10 @@ MorphingDancer.prototype.step = function(){
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-
-  if(Math.floor(Math.random()*2)) {
-    this.$node.animate( {"height": (this.size += Math.floor(Math.random()*20)) + 'px'}, 'slow');
-  } else{
-    this.$node.animate( {"height": (this.size -= Math.floor(Math.random()*20)) + 'px'}, 'slow');
+  if( this.$node.css('width') === '350px' ){
+    this.$node.animate( {width: '250px'} );
+  }else{
+    this.$node.animate( {width: '350px'} );
   }
-
 };
 
