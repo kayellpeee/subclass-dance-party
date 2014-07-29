@@ -9,24 +9,19 @@ var PersonDancer = function(top, left, timeBetweenSteps){
   if( this.leftOrRight ){
     this.$node.addClass('right');
   }
+  this.neighbor = 0;
   this.setPosition(580, left);
 };
 
 PersonDancer.prototype = Object.create(Dancer.prototype);
 
-PersonDancer.prototype.constructer = PersonDancer;
+PersonDancer.prototype.constructor = PersonDancer;
 
 PersonDancer.prototype.oldStep = Dancer.prototype.step;
 
 PersonDancer.prototype.step = function(){
-  // call the old version of step at the beginning of any call to this new version of step
   this.oldStep();
 
-  // this.step.call(Dancer, timeBetweenSteps);
-  // toggle() is a jQuery method to show/hide the <span> tag.
-  // See http://api.jquery.com/category/effects/ for this and
-  // other effects you can use on a jQuery-wrapped html tag.
-  // this.$node.toggle();
   if( this.random(2) ){
     this.left += 15;
     this.$node.animate({ "left": this.left + "px"} );
@@ -36,3 +31,37 @@ PersonDancer.prototype.step = function(){
   }
 };
 
+PersonDancer.prototype.fight = function(){
+  if( dancers.length > 1 ){
+    var removedChar = false;
+    var dancerDOM = $('.personDancer');
+    for( var char1 = 0; char1 < dancerDOM.length; char1++ ){
+      var char1LeftVal = dancerDOM[char1].style.left.substring(0, 8);
+      var char1Width = $('.personDancer')[char1].width;
+      for( var char2 = 0; char2 < dancerDOM.length; char2++ ){
+        var char2LeftVal = dancerDOM[char2].style.left.substring(0, 8);
+        var distance = (char2LeftVal - char1LeftVal);
+        if( distance < 0 ){
+          distance = distance * -1;
+        }
+        if( (distance <= char1Width) && (distance > 0) ) {
+          var moveChar = function(character, distance){
+            character.$node.animate( { 'top' : distance + 'px' });
+          };
+          moveChar(dancers[char1], 300);
+          moveChar(dancers[char2], 300);
+          setTimeout(function() {
+            dancerDOM[char1].remove();
+            moveChar(dancers[char2], 580);
+            dancers.splice(char1, 1);
+        }, 1000);
+          removedChar = true;
+          break;
+        }
+      }
+      if( removedChar ){
+        break;
+      }
+    }
+  }
+}

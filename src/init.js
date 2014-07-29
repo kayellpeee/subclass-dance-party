@@ -30,5 +30,30 @@ $(document).ready(function(){
   $(".lineUpLeft").on("click", function(event){
     dancers[0].lineUp();
   });
+
+  $('body').on('mouseenter', '.personDancer', function(e) {
+      $(this).animate( {height: '350px'} );
+  });
+
+  $('body').on('mouseleave', '.personDancer', function(e) {
+      $(this).animate( {height: '250px'} );
+  });
+
+  var spam = function(){
+    var dancer = new PersonDancer(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      1000
+    );
+    dancers.push(dancer);
+
+    $('body').append(dancer.$node);
+  };
+
+  $('body').keyup(function(e){
+     if(e.keyCode === 32){
+        dancers[0].fight();
+     }
+  });
 });
 
