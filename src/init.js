@@ -39,16 +39,6 @@ $(document).ready(function(){
       $(this).animate( {height: '250px'} );
   });
 
-  var spam = function(){
-    var dancer = new PersonDancer(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      1000
-    );
-    dancers.push(dancer);
-
-    $('body').append(dancer.$node);
-  };
 
   $('body').keyup(function(e){
      if(e.keyCode === 32){

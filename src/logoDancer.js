@@ -9,13 +9,12 @@ var LogoDancer = function(top, left, timeBetweenSteps){
 
 LogoDancer.prototype = Object.create(Dancer.prototype);
 
-LogoDancer.prototype.constructer = LogoDancer;
+LogoDancer.prototype.constructor = LogoDancer;
 
-LogoDancer.prototype.oldStep = Dancer.prototype.step;
 
 LogoDancer.prototype.step = function(){
   // call the old version of step at the beginning of any call to this new version of step
-  this.oldStep();
+  Dancer.prototype.step.call(this);
 
   // this.step.call(Dancer, timeBetweenSteps);
   // toggle() is a jQuery method to show/hide the <span> tag.

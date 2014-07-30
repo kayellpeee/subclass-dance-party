@@ -1,7 +1,5 @@
 var PersonDancer = function(top, left, timeBetweenSteps){
   Dancer.call(this, top, left, timeBetweenSteps);
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
   this.img = 'img/people/' + this.random(14) + '.gif';
   this.position = 0;
   this.$node = $('<img class="personDancer" src="' + this.img + '"></img>');
@@ -17,10 +15,11 @@ PersonDancer.prototype = Object.create(Dancer.prototype);
 
 PersonDancer.prototype.constructor = PersonDancer;
 
-PersonDancer.prototype.oldStep = Dancer.prototype.step;
+// PersonDancer.prototype.oldStep = Dancer.prototype.step;
 
 PersonDancer.prototype.step = function(){
-  this.oldStep();
+  // this.oldStep();
+  Dancer.prototype.step.call(this);
 
   if( this.random(2) ){
     this.left += 15;
@@ -64,4 +63,4 @@ PersonDancer.prototype.fight = function(){
       }
     }
   }
-}
+};
