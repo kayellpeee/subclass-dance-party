@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('#typeOfDancer').on('change', function(e) {
     var choice = $('#typeOfDancer').val() + 'Dancer';
     if(choice === 'PersonDancer') {
-      $('body').css( { 'background': 'url(img/people/fighting-game-background.gif) no-repeat center bottom', 'background-size' : '100%' } );
+      $('body').css( { 'background': '#000000 url(img/people/fighting-game-background.gif) no-repeat center bottom', 'background-size' : '100%' } );
     } else {
       $('body').css( { 'background': '#000000 url(img/danceFloor.png) no-repeat center top', 'background-size' : '100%' } );
     }
